@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+main {
+    flex: 1;
+    background-color: #272727;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+main p, main h1 {
+    font-family: "Kanit";
+    color: #FFE400;
+}
+
+.todo-auth {
+    display: flex;
+    align-items: center;
+}
+
+.todo-auth__button {
+    font-family: "Kanit";
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFE400;
+    cursor: pointer;
+}
+
+.todo-form {
+    margin-bottom: 20px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.todo-form label {
+    font-family: "Kanit";
+    border-radius: 10px 0px 0px 10px;
+    border-right: 3px solid #272727;
+    background-color: #FFE400;
+    padding: 5px;
+}
+
+.todo-form input {
+    background-color: #FFE400;
+    padding: 0 0 0 5px;
+    border: none;
+}
+
+.todo-form input::placeholder {
+    font-family: "Kanit";
+    color: #272727;
+}
+
+.todo-form input:focus {
+    box-shadow: 0 0 8px #FFE400;
+    outline: none;
+}
+
+.todo-form button {
+    font-family: "Kanit";
+    background-color: #FFE400;
+    padding: 5px;
+    border-radius: 0px 10px 10px 0px;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: 3px solid #272727;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.todo__group, .todo__actions {
+    display: flex;
+    align-items: center;
+}
+
+.line {
+    background-color: #FFE400;
+    width: 90%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.todo-list {
+    width: 100%;
+    max-width: 400px;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.todo-list::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    background-color: #414a4c;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo__text {
+    font-family: 'Kanit';
+    position: relative;
+    margin: 0px 10px 0px 10px;
+}
+
+.todo__delete {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #FFE400;
+    cursor: pointer;
+}
+
+.todo__delete:hover {
+    box-shadow: 0 0 8px #FFE400;
+}
+
+.todo__checkmark {
+    margin-left: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #414a4c;
+    border-radius: 100%;
+    border: 2px solid #FFE400;
+    position: relative;
+    transition: background-color 0.4s;
+    cursor: pointer;
+}
+
+.todo__checkbox:checked ~ .todo__checkmark {
+    background-color: #FFE400;
+}
+
+.todo__checkmark::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(40deg);
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.todo__checkbox:checked ~ .todo__checkmark::after {
+    opacity: 1;
+}
+

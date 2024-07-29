@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #272727;
+}
+
+.container h1 {
+    margin-left: 50px;
+    color: #FFE400;
+    font-family: 'Kanit';
+}
+
+.menu {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    color: brown;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.menu li form input {
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    color: brown;
+    background-color: aqua;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+}
+
+/* NEW CLASSES */

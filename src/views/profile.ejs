@@ -1,0 +1,60 @@
+<%- include('layouts/head.ejs')%>
+<body>
+    <header class="container">
+        <a href="/"><img src="/images/logo48.png"/></a>
+        <h1>ToDo App</h1>
+    </header>
+    <main>
+        <% if (uid) { %>
+            <div class="todo-auth">
+                <p>Your UID is: <%= uid %></p>
+                <form action="/nuke" method="post">
+                    <input class="todo-auth__button" type="submit" value="Nuke Session" onclick="return confirm('This action will end the session and delete cookie but not the todos.');"/>
+                </form>
+            </div>
+            <form class="todo-form" action="/addTodo" method="POST">    
+                <label for="inputField">Description:</label>
+                <input type="text" id="inputField" name="description" placeholder="Todo comes here" required>
+                <button type="submit">Submit</button>
+            </form>
+        <% } else { %>
+            <form class="todo-form" action="/firstTime" method="POST">    
+                <label for="inputField">Enter your UID:</label>
+                <input type="text" id="inputField" name="userId" placeholder="if you have one or leave it blank" size="24" maxlength="4">
+                <button type="submit">Submit</button>
+            </form>
+        <% } %>
+        <% if (!uid) { %>
+            <h1>Not Authenticated</h1>
+        <% } else if (todos.length > 0) { %>
+            <div class="todo-list">
+                <% todos.forEach(todo => { %>
+                    <div class="todo">
+                        <div class="todo__group">
+                            <form method="POST" action="/updateTodo/<%= todo._id %>">
+                                <input class="todo__checkbox" id="check<%= todo._id %>" hidden <%= todo.isDone == true ? 'checked':"" %> name="isDone" type="checkbox" onchange="this.form.submit()"/>
+                                <label class="todo__checkmark" for="check<%= todo._id %>"></label>
+                            </form>
+                            <h3 class="todo__text">
+                                <%= todo.text %>
+                                <% if (todo.isDone) { %>
+                                    <div class="line"></div>
+                                <% } %>
+                            </h3>
+                        </div>
+                        <div class="todo__actions">
+                            <form method="POST" action="/deleteTodo/<%= todo._id %>">
+                                <button class="todo__delete" onclick="this.form.submit()">
+                                    <img src="/images/delete.png"/>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <h1>NO TODO PRESENT</h1>
+        <% } %>
+    </main>
+</body>
+</html>
